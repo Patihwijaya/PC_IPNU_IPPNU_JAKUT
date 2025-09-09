@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>Document</title>
+    <style>
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-slideDown {
+        animation: slideDown 0.3s ease-out forwards;
+      }
+
+      .slide {
+        opacity: 0;
+        transition: opacity 0.7s ease-in-out;
+      }
+      .slide.active {
+        opacity: 1;
+      }
+
+      /* sembunyikan scrollbar */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- awal navbar -->
+    <nav
+      id="navbar"
+      class="p-3 fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+    >
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <a href="" class="flex items-center">
+          <img src="/img/logo2.png" alt="logo" class="w-30 h-25" />
+          <div>
+            <span class="ml-2 font-bold">PC IPNU IPPNU</span> <br />
+            <span class="ml-2 font-bold">JAKARTA UTARA</span>
+          </div>
+        </a>
+        <ul class="gap-10 hidden md:flex">
+          <li>
+            <a
+              href=""
+              class="block font-bold p-3 text-black hover:text-[#006868]"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href=""
+              class="block font-bold p-3 text-black hover:text-[#006868]"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href=""
+              class="block font-bold p-3 text-black hover:text-[#006868]"
+              >Articles</a
+            >
+          </li>
+          <li>
+            <a
+              href=""
+              class="block font-bold p-3 text-black hover:text-[#006868]"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <!-- tombol Hamborger (mobile) -->
+        <button
+          id="menu-btn"
+          class="text-gray-700 focus:outline-none md:hidden"
+        >
+          <!-- incon hamburgwe -->
+          <svg
+            id="hamburger-icon"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+      <!-- menu mobile -->
+      <ul
+        id="mobile-menu"
+        class="hidden absolute z-40 left-0 flex-col space-y-1 bg-white shadow rounded-lg w-full animate-slideDown"
+      >
+        <li>
+          <a
+            href=""
+            class="block font-bold p-3 text-black hover:bg-[#006868] hover:text-white"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href=""
+            class="block font-bold p-3 text-black hover:bg-[#006868] hover:text-white"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href=""
+            class="block font-bold p-3 text-black hover:bg-[#006868] hover:text-white"
+            >Articles</a
+          >
+        </li>
+        <li>
+          <a
+            href=""
+            class="block font-bold p-3 text-black hover:bg-[#006868] hover:text-white"
+            >Contact</a
+          >
+        </li>
+      </ul>
+      <!-- menu mobile akhir -->
+    </nav>
+    <!-- akhir navbar -->
+
+    <!-- awal caraosel -->
+    <div
+      class="mt-0 flex items-center justify-center h-150 md:mt-30 overflow-hidden"
+    >
+      <div class="relative w-full overflow-hidden rounded-xl shadow-lg">
+        <!-- wrapper -->
+        <div id="caraousel" class="flex transition-transform duration-500">
+          <img
+            src="/img/gambar1.jpg"
+            alt=""
+            class="w-full flex-shrink-0 object-cover"
+          />
+          <img
+            src="/img/gambar2.jpg"
+            alt=""
+            class="w-full flex-shrink-0 object-cover"
+          />
+          <img
+            src="/img/gambar3.jpg"
+            alt=""
+            class="w-full flex-shrink-0 object-cover"
+          />
+        </div>
+        <!-- tombol next/prev -->
+        <button
+          onclick="prev()"
+          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full md:hidden"
+        >
+          &#10094;
+        </button>
+        <button
+          onclick="next()"
+          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full md:hidden"
+        >
+          &#10095;
+        </button>
+
+        <!-- dots -->
+        <div
+          class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 md:bottom-60 md:translate-x-[550px]"
+        >
+          <button
+            class="dot w-2.5 h-2.5 rounded-full bg-white/50 border border-white md:w-5 md:h-5"
+          ></button>
+          <button
+            class="dot w-2.5 h-2.5 rounded-full bg-white/50 border border-white md:w-5 md:h-5"
+          ></button>
+          <button
+            class="dot w-2.5 h-2.5 rounded-full bg-white/50 border border-white md:w-5 md:h-5"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- akhir caraosel -->
+
+    <!-- hero section awal -->
+    <div
+      class="px-5 mt-[-140px] md:mt-0 md:absolute md:z-30 md:w-full md:bg-gradient-to-r from-black via-black/80 to-transparent md:top-30 md:h-150"
+    >
+      <div class="md:flex flex-col gap-5 justify-center md:mt-25">
+        <h1
+          class="bg-[#006868] text-white text-center py-3 mx-auto my-5 w-50 rounded-full border-3 border-[#DE9F41] md:mx-0"
+        >
+          WELCOME TO
+        </h1>
+        <h2
+          class="text-center font-serif font-bold text-[#006868] md:text-white md:text-start md:text-lg"
+        >
+          PC IPNU IPPNU JAKARTA UTARA
+        </h2>
+        <p
+          class="text-center text-sm mt-4 md:text-start md:text-white md:text-lg md:w-150"
+        >
+          PC IPNU IPPNU JAKARTA UTARA adalah organisasi pelajar di bawah naungan
+          Nahdlatul Ulama (NU) yang bertujuan menghimpun, membina, dan
+          mengembangkan karakter generasi muda (pelajar putra dan putri) serta
+          meneruskan perjuangan dan ajaran Islam Ahlussunnah wal Jamaah
+          An-Nahdiyah melalui pendidikan dan kegiatan kaderisasi.
+        </p>
+      </div>
+    </div>
+    <!-- hero section akhir -->
+
+    <!-- video profile -->
+    <a
+      href="https://www.youtube.com/watch?v=DKqTh-k-8PE&list=RDDKqTh-k-8PE&start_radio=1&pp=oAcB"
+      class="relative block w-80 max-w-lg mx-auto mt-5 rounded-xl overflow-hidden shadow-lg group md:w-full"
+    >
+      <!-- gambar thumbnail -->
+      <img
+        src="/img/gambar2.jpg"
+        alt="tonton di youtube"
+        class="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+
+      <!-- tombol play -->
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="bg-black/60 rounded-full p-4">
+          <svg
+            class="w-12 h-12 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- label tonton di youtube -->
+      <div
+        class="absolute bottom-2 right-2 bg-white text-black text-xs font-semibold px-3 py-1 rounded-full shadow"
+      >
+        toton di youtube
+      </div>
+    </a>
+
+    <div class="px-5 mt-5 md:px-[200px]">
+      <h2 class="font-serif font-bold text-[#006868] md:text-2xl">
+        Vidoe Profile
+      </h2>
+      <p class="text-sm mt-4 md:text-lg">
+        Vidoe Profile untuk memperkenalkan organisasi secara menyeluruh,
+        walaupun tidak semua, tetapi ini dapat menjadi gambaran tergahadap
+        organisasi ini secara menyeluruh
+      </p>
+      <a
+        href="https://www.youtube.com/watch?v=DKqTh-k-8PE&list=RDDKqTh-k-8PE&start_radio=1&pp=oAcB"
+      >
+        <button
+          class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+        >
+          DISCOVER MORE
+        </button>
+      </a>
+    </div>
+    <!-- video profile akhir -->
+
+    <!-- visi -->
+    <div class="px-5 mt-5 md:px-[200px]">
+      <h2 class="font-serif font-bold text-[#006868] md:text-2xl">
+        Our Vision
+      </h2>
+      <p class="text-sm mt-4 md:text-lg">
+        terwujudnya pelajar bangsa yang bertaqwa, berakhlak mulia, berilmu,
+        berwawasan kebangsaan, dan bertanggung jawab atas tegaknya Islam
+        Ahlussunnah wal Jamaah (Aswaja) berdasarkan Pancasila dan UUD 1945.
+      </p>
+    </div>
+    <!-- akhir visi -->
+
+    <!-- misi -->
+    <div class="px-5 mt-5 md:px-[200px]">
+      <h2 class="font-serif font-bold text-[#006868] md:text-2xl">
+        Our Mision
+      </h2>
+      <ul class="space-y-3 mt-5 md:text-lg">
+        <li
+          class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:border-y-[12px] before:border-y-transparent before:border-l-[14px] before:border-l-teal-700"
+        >
+          Menghimpun dan membina pelajar serta santri di bawah naungan Nahdlatul
+          Ulama untuk menjadi kader yang berkualitas.
+        </li>
+        <li
+          class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:border-y-[12px] before:border-y-transparent before:border-l-[14px] before:border-l-teal-700"
+        >
+          Menyiapkan kader-kader yang intelektual dan memiliki kemampuan sebagai
+          penerus perjuangan bangsa.
+        </li>
+        <li
+          class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:border-y-[12px] before:border-y-transparent before:border-l-[14px] before:border-l-teal-700"
+        >
+          Memberikan wadah bagi anggota untuk mengaktualisasikan potensi dan
+          kemampuan mereka secara optimal.
+        </li>
+        <li
+          class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:border-y-[12px] before:border-y-transparent before:border-l-[14px] before:border-l-teal-700"
+        >
+          Menyusun landasan program perjuangan yang responsif terhadap
+          perkembangan masyarakat (maslahah al-ammah).
+        </li>
+        <li
+          class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:border-y-[12px] before:border-y-transparent before:border-l-[14px] before:border-l-teal-700"
+        >
+          Menjalin komunikasi dan kerjasama dengan pihak-pihak lain yang
+          mendukung tujuan organisasi, selama tidak merugikan organisasi.
+        </li>
+        <li
+          class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:border-y-[12px] before:border-y-transparent before:border-l-[14px] before:border-l-teal-700"
+        >
+          Mendorong pemanfaatan dan pengembangan ilmu pengetahuan serta
+          teknologi untuk peningkatan Sumber Daya Manusia (SDM).
+        </li>
+      </ul>
+    </div>
+    <!-- akhir misi -->
+
+    <!-- hero section -->
+    <div class="px-5 mt-20 relative md:px[200px]">
+      <div class="md:px-[200px]">
+        <img src="/img/gambar1.jpg" class="w-100 md:mx-auto md:w-full" alt="" />
+      </div>
+      <div
+        class="w-30 h-30 bg-white shadow-xl/30 rounded-full absolute -top-15 right-1 md:left-250 md:w-50 md:h-50"
+      >
+        <div class="absolute left-0 top-5 md:top-13 md:left-5 md:right-5">
+          <p class="text-center text-xl font-bold text-[#006868] md:text-2xl">
+            2025
+          </p>
+          <p class="text-center text-sm md:text-xl">
+            PC IPNU IPPNU JAKARTA UTARA
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- hero section akhir -->
+
+    <!-- timeline -->
+    <div class="mt-80 bg-[#DE9F41] w-full max-h-min p-4">
+      <div class="relative">
+        <div class="left-9 -top-60 md:block md:top-0">
+          <div class="md:mt-5">
+            <h2
+              class="text-center font-serif font-bold text-white md:text-start md:text-white md:text-2xl"
+            >
+              Timeline
+            </h2>
+            <h2
+              class="text-center font-serif font-bold text-white md:text-start md:text-white md:text-2xl"
+            >
+              PC IPNU IPPNU JAKARTA UTARA
+            </h2>
+          </div>
+          <div class="md:flex md:flex-wrap gap-3">
+            <!-- card 1 -->
+            <div class="p-2 mt-5 w-80 rounded-xl mx-auto bg-white">
+              <div class="overflow-hidden w-full h-40">
+                <img
+                  src="/img/gambar2.jpg"
+                  alt=""
+                  class="rounded-md object-cover w-full h-full"
+                />
+              </div>
+              <h2 class="font-bold text-md">Penanaman Pohon Mangrove</h2>
+              <p class="mt-5 text-sm">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                numquam blanditiis nam? Pariatur eius dolor illo error
+                laboriosam, blanditiis, nisi nemo obcaecati maiores dignissimos
+                a!
+              </p>
+              <div class="flex flex-row-reverse">
+                <button
+                  class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+                >
+                  READ MORE
+                </button>
+              </div>
+            </div>
+            <!-- card 2 -->
+            <div class="p-2 mt-5 w-80 rounded-xl mx-auto bg-white">
+              <div class="overflow-hidden w-full h-40">
+                <img src="/img/gambar1.jpg" alt="" class="rounded-md
+                object-cover w-full h-full"" />
+              </div>
+              <h2 class="font-bold text-md">Penanaman Pohon Mangrove</h2>
+              <p class="mt-5 text-sm">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                numquam blanditiis nam? Pariatur eius dolor illo error
+                laboriosam, blanditiis, nisi nemo obcaecati maiores dignissimos
+                a!
+              </p>
+              <div class="flex flex-row-reverse">
+                <button
+                  class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+                >
+                  READ MORE
+                </button>
+              </div>
+            </div>
+            <!-- card 3 -->
+            <div class="p-2 mt-5 w-80 rounded-xl mx-auto bg-white">
+              <div class="overflow-hidden w-full h-40">
+                <img
+                  src="/img/gambar3.jpg"
+                  alt=""
+                  class="rounded-md object-cover w-full h-full"
+                />
+              </div>
+              <h2 class="font-bold text-md">Penanaman Pohon Mangrove</h2>
+              <p class="mt-5 text-sm">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                numquam blanditiis nam? Pariatur eius dolor illo error
+                laboriosam, blanditiis, nisi nemo obcaecati maiores dignissimos
+                a!
+              </p>
+              <div class="flex flex-row-reverse">
+                <button
+                  class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+                >
+                  READ MORE
+                </button>
+              </div>
+            </div>
+            <!-- card 1 -->
+            <div class="p-2 mt-5 w-80 rounded-xl mx-auto bg-white">
+              <div class="overflow-hidden w-full h-40">
+                <img
+                  src="/img/gambar2.jpg"
+                  alt=""
+                  class="rounded-md object-cover w-full h-full"
+                />
+              </div>
+              <h2 class="font-bold text-md">Penanaman Pohon Mangrove</h2>
+              <p class="mt-5 text-sm">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                numquam blanditiis nam? Pariatur eius dolor illo error
+                laboriosam, blanditiis, nisi nemo obcaecati maiores dignissimos
+                a!
+              </p>
+              <div class="flex flex-row-reverse">
+                <button
+                  class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+                >
+                  READ MORE
+                </button>
+              </div>
+            </div>
+            <!-- card 2 -->
+            <div class="p-2 mt-5 w-80 rounded-xl mx-auto bg-white">
+              <div class="overflow-hidden w-full h-40">
+                <img src="/img/gambar1.jpg" alt="" class="rounded-md
+                object-cover w-full h-full"" />
+              </div>
+              <h2 class="font-bold text-md">Penanaman Pohon Mangrove</h2>
+              <p class="mt-5 text-sm">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                numquam blanditiis nam? Pariatur eius dolor illo error
+                laboriosam, blanditiis, nisi nemo obcaecati maiores dignissimos
+                a!
+              </p>
+              <div class="flex flex-row-reverse">
+                <button
+                  class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+                >
+                  READ MORE
+                </button>
+              </div>
+            </div>
+            <!-- card 3 -->
+            <div class="p-2 mt-5 w-80 rounded-xl mx-auto bg-white">
+              <div class="overflow-hidden w-full h-40">
+                <img
+                  src="/img/gambar3.jpg"
+                  alt=""
+                  class="rounded-md object-cover w-full h-full"
+                />
+              </div>
+              <h2 class="font-bold text-md">Penanaman Pohon Mangrove</h2>
+              <p class="mt-5 text-sm">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                numquam blanditiis nam? Pariatur eius dolor illo error
+                laboriosam, blanditiis, nisi nemo obcaecati maiores dignissimos
+                a!
+              </p>
+              <div class="flex flex-row-reverse">
+                <button
+                  class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+                >
+                  READ MORE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- timeline akhir -->
+
+    <!-- our program -->
+    <div class="px-5 mt-15 md:mx-[200px]">
+      <h2
+        class="text-center font-serif font-bold text-[#006868] md:text-start md:text-2xl"
+      >
+        Our Program
+      </h2>
+      <div class="overflow-x-auto">
+        <div class="mt-10 flex flex-nowrap gap-5 snap-x scroll-pl-5">
+          <!-- card 1 -->
+          <div
+            class="snap-start transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <div class="w-60 h-auto">
+              <img
+                src="/img/gambar2.jpg"
+                alt=""
+                class="w-60 h-60 object-cover"
+              />
+            </div>
+            <div class="p-3 w-60 text-start shadow-xl">
+              <h2 class="font-bold text-md">Pelatihan Administrasi</h2>
+              <p class="text-sm mt-5">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
+                ad illum dicta repellendus aut rem modi inventore impedit
+                cupiditate laborum?
+              </p>
+              <button
+                class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+              >
+                Learn Now
+              </button>
+            </div>
+          </div>
+          <!-- card 2 -->
+          <div
+            class="snap-start transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <div class="w-60 h-auto">
+              <img
+                src="/img/gambar1.jpg"
+                alt=""
+                class="w-60 h-60 object-cover"
+              />
+            </div>
+            <div class="p-3 w-60 text-start shadow-xl">
+              <h2 class="font-bold text-md">Pelatihan Administrasi</h2>
+              <p class="text-sm mt-5">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
+                ad illum dicta repellendus aut rem modi inventore impedit
+                cupiditate laborum?
+              </p>
+              <button
+                class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+              >
+                Learn Now
+              </button>
+            </div>
+          </div>
+          <!-- card 3 -->
+          <div
+            class="snap-start transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <div class="w-60 h-auto">
+              <img
+                src="/img/gambar3.jpg"
+                alt=""
+                class="w-60 h-60 object-cover"
+              />
+            </div>
+            <div class="p-3 w-60 text-start shadow-xl">
+              <h2 class="font-bold text-md">Pelatihan Administrasi</h2>
+              <p class="text-sm mt-5">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
+                ad illum dicta repellendus aut rem modi inventore impedit
+                cupiditate laborum?
+              </p>
+              <button
+                class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+              >
+                Learn Now
+              </button>
+            </div>
+          </div>
+          <!-- card 1 -->
+          <div
+            class="snap-start transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <div class="w-60 h-auto">
+              <img
+                src="/img/gambar2.jpg"
+                alt=""
+                class="w-60 h-60 object-cover"
+              />
+            </div>
+            <div class="p-3 w-60 text-start shadow-xl">
+              <h2 class="font-bold text-md">Pelatihan Administrasi</h2>
+              <p class="text-sm mt-5">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
+                ad illum dicta repellendus aut rem modi inventore impedit
+                cupiditate laborum?
+              </p>
+              <button
+                class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+              >
+                Learn Now
+              </button>
+            </div>
+          </div>
+          <!-- card 2 -->
+          <div
+            class="snap-start transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <div class="w-60 h-auto">
+              <img
+                src="/img/gambar1.jpg"
+                alt=""
+                class="w-60 h-60 object-cover"
+              />
+            </div>
+            <div class="p-3 w-60 text-start shadow-xl">
+              <h2 class="font-bold text-md">Pelatihan Administrasi</h2>
+              <p class="text-sm mt-5">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
+                ad illum dicta repellendus aut rem modi inventore impedit
+                cupiditate laborum?
+              </p>
+              <button
+                class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+              >
+                Learn Now
+              </button>
+            </div>
+          </div>
+          <!-- card 3 -->
+          <div
+            class="snap-start transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <div class="w-60 h-auto">
+              <img
+                src="/img/gambar3.jpg"
+                alt=""
+                class="w-60 h-60 object-cover"
+              />
+            </div>
+            <div class="p-3 w-60 text-start shadow-xl">
+              <h2 class="font-bold text-md">Pelatihan Administrasi</h2>
+              <p class="text-sm mt-5">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
+                ad illum dicta repellendus aut rem modi inventore impedit
+                cupiditate laborum?
+              </p>
+              <button
+                class="my-5 px-5 py-2 text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+              >
+                Learn Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- akhir our program -->
+
+    <!-- congratulation -->
+    <div class="px-5 py-5 mt-15 h-auto bg-[#DE9F41] block">
+      <h2 class="text-center font-serif font-bold text-white pt-5">
+        CONGRATULATION
+      </h2>
+      <div class="flex items-center justify-center mt-5">
+        <div
+          id="scroll-container"
+          class="relative w-full mt-5 sm:w-full overflow-hidden"
+        >
+          <!-- Track berisi kartu; akan diduplikasi lewat JS untuk loop mulus -->
+          <div id="track" class="flex gap-4 no-scrollbar select-none">
+            <!-- kartu contoh -->
+            <article class="min-w-[260px]">
+              <img src="img/1.jpg" alt="" class="w-full" />
+            </article>
+            <article class="min-w-[260px]">
+              <img src="img/2.jpg" alt="" class="w-full" />
+            </article>
+            <article class="min-w-[260px]">
+              <img src="img/3.jpg" alt="" class="w-full" />
+            </article>
+            <article class="min-w-[260px]">
+              <img src="img/4.jpg" alt="" class="w-full" />
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <button
+        class="my-5 px-5 py-2 mx-auto block text-sm rounded-full bg-[#006868] border-2 border-black text-white hover:bg-[#003C3C]"
+      >
+        SEE MORE
+      </button>
+    </div>
+
+    <!-- congratulation akhir -->
+
+    <!-- information -->
+    <div class="px-5 mt-15 md:px-[200px]">
+      <h2
+        class="text-center font-serif font-bold text-[#006868] md:text-start md:text-2xl"
+      >
+        Our Program
+      </h2>
+      <div class="mt-5 md:flex gap-5 flex-wrap justify-center">
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+        <!-- card 1 -->
+        <div
+          class="flex gap-2 p-4 my-3 bg-white shadow-md rounded-xl max-w-md transition-colors duration-300 group hover:bg-gray-50 md:block md:w-60"
+        >
+          <div
+            class="overflow-hidden w-30 h-30 rounded-xl flex-none md:w-50 md:h-50"
+          >
+            <img
+              src="/img/gambar1.jpg"
+              alt=""
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
+
+          <h3
+            class="text-sm font-semibold transition-colors duration-300 group-hover:text-[#006868] md:text-lg"
+          >
+            Rapat Persiapan RakorCab PC IPNU IPPNU Jakarta Utara : berkolaborasi
+            dengan pemerintah
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!-- information akhir -->
+    <!-- flex flex-col gap-5 mt-10 p-3 border-t-1 border-slate-300 md:flex-row md:justify-around -->
+    <!-- md:flex flex-row justify-center gap-4 -->
+    <!-- footer -->
+    <div
+      class="border-t-1 border-slate-300 py-3 flex flex-col gap-5 md:flex md:flex-row md:justify-center"
+    >
+      <!-- quick link -->
+      <div class="md:basis-80">
+        <h2 class="text-center font-serif font-bold text-[#006868]">
+          Quick Link
+        </h2>
+        <ul class="text-center">
+          <li class="list-none">
+            <a href="#" class="hover:text-[#006868]">Vision and Mision</a>
+          </li>
+          <li class="list-none">
+            <a href="#" class="hover:text-[#006868]">Timeline</a>
+          </li>
+          <li class="list-none">
+            <a href="#" class="hover:text-[#006868]">information</a>
+          </li>
+        </ul>
+      </div>
+      <!-- logo and medsos -->
+      <div class="flex justify-center items-center flex-col gap-3 md:basis-80">
+        <div class="flex items-center justify-center">
+          <img src="img/logo2.png" alt="" class="w-30 h-25" />
+          <div>
+            <span class="ml-2 font-bold">PC IPNU IPPNU</span> <br />
+            <span class="ml-2 font-bold">JAKARTA UTARA</span>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <!-- X -->
+          <div
+            class="w-10 h-10 bg-teal-800 flex items-center justify-center rounded transition-all duration-300 hover:bg-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="white "
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18.244 2h3.453l-7.54 8.604L23.5 22h-6.69l-5.243-6.84L5.59 22H2.135l7.933-9.051L.5 2h6.862l4.713 6.231L18.244 2zm-1.206 18h1.91L7.072 4h-2.05l12.016 16z"
+              />
+            </svg>
+          </div>
+
+          <!-- YouTube -->
+          <div
+            class="w-10 h-10 bg-teal-800 flex items-center justify-center rounded transition-all duration-300 hover:bg-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="white"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23.498 6.186a2.974 2.974 0 0 0-2.094-2.107C19.475 3.5 12 3.5 12 3.5s-7.475 0-9.404.579A2.974 2.974 0 0 0 .502 6.186C0 8.126 0 12 0 12s0 3.874.502 5.814a2.974 2.974 0 0 0 2.094 2.107C4.525 20.5 12 20.5 12 20.5s7.475 0 9.404-.579a2.974 2.974 0 0 0 2.094-2.107C24 15.874 24 12 24 12s0-3.874-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z"
+              />
+            </svg>
+          </div>
+
+          <!-- Instagram -->
+          <div
+            class="w-10 h-10 bg-teal-800 flex items-center justify-center rounded transition-all duration-300 hover:bg-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="white"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3a5.25 5.25 0 1 1 0 10.5a5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5a3.75 3.75 0 0 0 0-7.5zm5-1a1 1 0 1 1 0 2a1 1 0 0 1 0-2z"
+              />
+            </svg>
+          </div>
+
+          <!-- TikTok -->
+          <div
+            class="w-10 h-10 bg-teal-800 flex items-center justify-center rounded transition-all duration-300 hover:bg-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="white"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12.75 2a.75.75 0 0 1 .75.75v.201a5.751 5.751 0 0 0 5.58 5.745a.75.75 0 0 1 .67.745v2.031a.75.75 0 0 1-.929.73a8.278 8.278 0 0 1-4.07-2.163V15a6.75 6.75 0 1 1-6.75-6.75a.75.75 0 0 1 .75.75v2.06a.75.75 0 0 1-.54.72A3.75 3.75 0 1 0 12 15V2.75a.75.75 0 0 1 .75-.75z"
+              />
+            </svg>
+          </div>
+
+          <!-- Email -->
+          <div
+            class="w-10 h-10 bg-teal-800 flex items-center justify-center rounded transition-all duration-300 hover:bg-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="white"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M2 6.75A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.75v10.5A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25V6.75zm2.25-.25a.25.25 0 0 0-.25.25v.334l8.25 5.16l8.25-5.16V6.75a.25.25 0 0 0-.25-.25H4.25zm15.5 2.618l-7.822 4.89a.75.75 0 0 1-.856 0L3.25 9.118V17.25c0 .138.112.25.25.25h14.5a.25.25 0 0 0 .25-.25V9.118z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- contact info -->
+      <div class="md:basis-80">
+        <h2 class="text-center font-serif font-bold text-[#006868]">
+          Contact Info
+        </h2>
+        <div class="flex flex-col items-center justify-center mt-5">
+          <!-- Telepon -->
+          <div class="flex items-center space-x-2 mb-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                d="M2 5.5C2 4.12 3.12 3 4.5 3h2A2.5 2.5 0 0 1 9 5.5V7a2 2 0 0 1-2 2H5a10.97 10.97 0 0 0 6 6v-2a2 2 0 0 1 2-2h1.5A2.5 2.5 0 0 1 17 13.5v2A2.5 2.5 0 0 1 14.5 18H13C7.48 18 3 13.52 3 8V6.5A1.5 1.5 0 0 1 4.5 5H6a2 2 0 0 1 2 2v1.5"
+              />
+            </svg>
+            <span>085777899852 <span class="text-sm">(Partnership)</span></span>
+          </div>
+
+          <!-- Chat / Organization -->
+          <div class="flex items-center space-x-2 mb-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                d="M7 8h10M7 12h6m-6 4h4m-2 7a9 9 0 1 1 0-18 9 9 0 0 1 0 18zm0 0v-2a9 9 0 0 1-9-9h2"
+              />
+            </svg>
+            <span
+              >085777899852
+              <span class="text-sm">(Organization & NGO)</span></span
+            >
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-center space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 16.5v-9z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                d="M3 7l9 6 9-6"
+              />
+            </svg>
+            <span>pcipnuippnujakut@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <!-- contact info akhir -->
+    </div>
+    <div class="mt-5 border-t-4 border-black p-4 md:border-t-1">
+      <p class="text-xs text-center">
+        Copyright @ 2025 PC IPNU IPPNU Jakarta Utara - All rights reserved
+      </p>
+    </div>
+    <!-- footer akhir -->
+
+    <script src="main.js"></script>
+  </body>
+</html>
