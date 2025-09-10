@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pc-ipnu-ippnu-jakut.netlify.app/sitemap.xml
